@@ -103,8 +103,19 @@ def main():
     for n in x[index]:
         for i in dicionario_freq.values():
             if i[0]+ 5 > n > i[0] - 5 or i[1]+ 5 > n > i[1] - 5:
-                print("Tecla {}" .format(i))
                 resposta.append(n)
+
+    #Remove valores repetidos da lista resposta
+    resposta = list(dict.fromkeys(resposta))
+    # Converte os valores da lista resposta em inteiros
+    resposta = [int(i) for i in resposta]
+
+    print("Frequencias encontradas {}" .format(resposta))
+    #encontra a tecla correspondente
+    for i in dicionario_freq.values():
+        if i[0] in resposta and i[1] in resposta:
+            print("Tecla {}" .format(list(dicionario_freq.keys())[list(dicionario_freq.values()).index(i)]))
+
 
 if __name__ == "__main__":
     main()
